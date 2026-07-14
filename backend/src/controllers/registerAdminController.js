@@ -3,14 +3,14 @@ import crypto from "crypto";
 import jsonwebtoken from "jsonwebtoken";
 import bcryptjs from "bcryptjs";
 
-import customerModel from "../models/customers";
+import adminModel from "../models/admin.js";
 
 import { config } from "../../config.js"
 import { register } from "module";
 
-const registerCustomerController = {};
+const registerAdminController = {};
 
-registerCustomerController.register = async (req, res) => {
+registerAdminController.register = async (req, res) => {
     try {
         const {
             name,
@@ -21,10 +21,10 @@ registerCustomerController.register = async (req, res) => {
             timeOut,
         } = req.body;
 
-        const existsCustomer = await customerModel.findOne({ email });
+        const existsAdmin = await adminModel.findOne({ email });
 
-        if (existsCustomer) {
-            return res.status(400).json({ message: "Customer already exists" })
+        if (existsAdmin) {
+            return res.status(400).json({ message: "Admin already exists" })
         }
 
         const passwordHashed = await bcryptjs.hash(password, 10);
@@ -77,7 +77,7 @@ registerCustomerController.register = async (req, res) => {
     }
 };
 
-registerCustomerController.verifyCode = async (req, res) => {
+registerAdminController.verifyCode = async (req, res) => {
     try {
         const { verificationCodeRequest } = req.body;
 
@@ -98,14 +98,14 @@ registerCustomerController.verifyCode = async (req, res) => {
             return res.status(400).json({ message: "Invalid code" });
         }
 
-        const newCustomer = customerModel({
+        const newAdmin = adminModel({
             name,
             email,
             password,
             isVerified: true,
         })
 
-        await newCustomer.save();
+        await newAdmin.save();
 
         res.clearCookie("registrationCookie");
 
@@ -116,4 +116,4 @@ registerCustomerController.verifyCode = async (req, res) => {
     }
 };
 
-export default registerCustomerController;
+export default registerAdminController;
