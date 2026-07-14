@@ -51,7 +51,7 @@ registerCustomerController.register = async (req, res) => {
             service: "gmail",
             auth: {
                 user: config.email.user_email,
-                pass: config.email_user_password,
+                pass: config.email.user_password,
             }
         });
 
@@ -85,7 +85,7 @@ registerCustomerController.verifyCode = async (req, res) => {
 
         const decoded = jsonwebtoken.verify(token, config.JWT.secret);
         const {
-            randomCode = storedCode,
+            randomCode : storedCode,
             name,
             email,
             password,

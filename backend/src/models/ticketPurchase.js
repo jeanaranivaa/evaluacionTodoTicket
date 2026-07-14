@@ -8,7 +8,7 @@
     transactionId
 */
 
-import { Schema, model } from "mongoose";
+import mongoose, { Schema, model } from "mongoose";
 
 const ticketsSchema = new Schema({
     customerId: { type: mongoose.Schema.Types.ObjectId, ref: "Customer" },
