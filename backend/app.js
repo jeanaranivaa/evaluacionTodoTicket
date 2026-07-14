@@ -3,6 +3,8 @@ import cookieParser from "cookie-parser";
 import cors from "cors"
 import registerCustomerRoutes from "./src/routes/registerCustomer.js"
 import registerAdminRoutes from "./src/routes/registerAdmin.js"
+import loginCustomerRoutes from "./src/routes/loginCustomer.js"
+import loginAdminRoutes from "./src/routes/loginAdmin.js"
 
 const app = express();
 
@@ -18,5 +20,7 @@ app.use(express.json())
 
 app.use("/api/registerCustomer", registerCustomerRoutes)
 app.use("/api/registerAdmin", registerAdminRoutes)
+app.use("/api/loginCustomer", loginCustomerRoutes)
+app.use("/api/loginAdmin", loginAdminRoutes)
 
 export default app;
