@@ -6,6 +6,7 @@ import registerAdminRoutes from "./src/routes/registerAdmin.js"
 import loginCustomerRoutes from "./src/routes/loginCustomer.js"
 import loginAdminRoutes from "./src/routes/loginAdmin.js"
 import wompiRoutes from "./src/routes/wompi.js"
+import ticketPurchaseRoutes from "./src/routes/ticketPurchase.js"
 
 const app = express();
 
@@ -24,5 +25,6 @@ app.use("/api/registerAdmin", registerAdminRoutes)
 app.use("/api/loginCustomer", loginCustomerRoutes)
 app.use("/api/loginAdmin", loginAdminRoutes)
 app.use("/api/wompi", wompiRoutes)
+app.use("/api/ticketPurchase", ticketPurchaseRoutes)
 
 export default app;
