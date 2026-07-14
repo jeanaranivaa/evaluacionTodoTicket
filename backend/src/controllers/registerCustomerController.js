@@ -3,7 +3,7 @@ import crypto from "crypto";
 import jsonwebtoken from "jsonwebtoken";
 import bcryptjs from "bcryptjs";
 
-import customerModel from "../models/customers";
+import customerModel from "../models/customers.js";
 
 import { config } from "../../config.js"
 import { register } from "module";
