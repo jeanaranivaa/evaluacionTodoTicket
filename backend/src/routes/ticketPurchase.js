@@ -16,8 +16,13 @@ router.route("/")
     );
 
 router.route("/:id")
-    .put
-    (ticketPurchaseController.updateTicket)
-    .delete(ticketPurchaseController.deleteTicket);
+    .put(
+        validateAuthCookie(["customer", "admin"]),
+        ticketPurchaseController.updateTicket
+    )
+    .delete(
+        validateAuthCookie(["admin"]),
+        ticketPurchaseController.deleteTicket
+    );
 
 export default router;
